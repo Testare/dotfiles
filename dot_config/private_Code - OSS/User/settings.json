@@ -1,0 +1,78 @@
+{
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["k","j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", " "],
+            "commands": ["workbench.action.showCommands"]
+        },
+        {
+            "before": ["<leader>", "`"],
+            "commands": ["terminal.focus"]
+        },
+        {
+            "before": ["<leader>", "f", "f"],
+            "commands":["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "r", "f"],
+            "commands": ["editor.action.quickFix"]
+        },
+        {
+            "before": ["<leader>", "r", "F"],
+            "commands": ["editor.action.autoFix"]
+        },
+        {
+            "before": ["<leader>", "s", ","],
+            "commands": ["workbench.action.openSettingsJson"]
+        },
+        {
+            "before": ["<leader>", "s", "."],
+            "commands": ["workbench.action.openSettings2"]
+        },
+        {
+            "before": ["<leader>", "s", "k"],
+            "commands": ["workbench.action.openGlobalKeybindingsFile"]
+        },
+        {
+            "before": ["<leader>", "s", "K"],
+            "commands": ["workbench.action.openGlobalKeybindings"]
+        },
+        {
+            "before": ["<leader>", "e", "j", "c"],
+            "commands": ["io.orta.jest.coverage.toggle"]
+        },
+        {
+            "before": ["<leader>", "v", "f"],
+            "commands":["editor.toggleFold"]
+        },
+        {
+            "before": ["<leader>", "v", "F"],
+            "commands":["editor.foldAll"]
+        },
+        {
+            "before": ["<leader>", "v", "k"],
+            "commands":["workbench.action.keepEditor"]
+        },
+        {
+            "before": ["<leader>", "v", "U"],
+            "commands":["editor.unfoldAll"]
+        }
+    ],
+    "vim.leader": "<Space>",
+    "vim.useSystemClipboard": true,
+    "editor.lineNumbers": "relative",
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Fira Code', 'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 13,
+    "terminal.integrated.fontFamily": "'Hack'",
+    "terminal.integrated.fontSize": 12,
+    "window.zoomLevel": 0,
+    "vim.commandLineModeKeyBindings": [
+    
+    ]
+}

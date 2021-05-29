@@ -1,0 +1,59 @@
+.. () {
+  NUMERIC="$(echo $1 | grep -E '^[0-9]+$')"
+  if [ -n "$NUMERIC" ]; then
+      COUNT=${1:-1}
+      DIRCHANGE="."
+      while [ $COUNT -gt 0 ]; do 
+          echo "| $(cd $DIRCHANGE; pwd)"
+          COUNT=$(($COUNT - 1))
+          DIRCHANGE="../${DIRCHANGE}"
+      done
+      cd $DIRCHANGE
+      echo "> $(pwd)"
+  else
+      EXISTS="$(dirname "`pwd`" | grep "$1")"
+      if [ -n "$EXISTS" ]; then
+          DIRPWD="$(pwd)"
+          MATCH=""
+          while [ -z "$MATCH" ]; do
+              echo "| $DIRPWD"
+              DIRPWD="$(dirname $DIRPWD)"
+              DIRBASE="$(basename $DIRPWD)"
+              MATCH=`echo "$DIRBASE" | grep "$1"`
+          done
+          cd "$DIRPWD"
+          echo "> $(pwd)"
+      else 
+          echo "Usage: Optional parameter must match a parent directory's name or a number"
+      fi
+  fi
+}
+
+function panview {
+    pandoc "$1" -f markdown -t latex -o ./out.pdf
+    open ./out.pdf
+}
+
+function jsonpp {
+    touch "$1.tmp"
+    cat $1 | python -m json.tool > "${1}.tmp"
+    rm $1
+    mv "$1.tmp" $1
+}
+
+
+cpfp () {
+    echo `pwd`/$1 | pbcopy
+}
+
+function notes {
+    vim $HOME/gDrive/notes/$1.md;
+    if [ -f $HOME/gDrive/notes/$1.md ] && !([ -s $HOME/$1 ]); then
+        echo "writing note";
+        ln -s $HOME/gDrive/notes/$1.md $HOME/$1;
+    fi
+}
+
+function ts-tell {
+    echo "$*" | nc 54.225.52.148 7770
+}

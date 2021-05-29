@@ -1,0 +1,9 @@
+Host terraria-server
+    User ec2-user
+    HostName 54.225.52.148
+    IdentityFile /home/testare/.ssh/terraria-server.pem
+
+Host game-server
+    User ec2-user
+    HostName 44.242.47.238
+    IdentityFile /home/testare/.ssh/game-server-key.pem

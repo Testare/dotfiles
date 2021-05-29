@@ -1,0 +1,4 @@
+export HISTFILE=~/.histfile
+export TERMINAL=konsole
+export EDITOR=vim
+export GDRIVE=/g

@@ -1,0 +1,198 @@
+nnoremap s< :tabnew ~/.local/share/chezmoi/dot_vimrc<CR>
+source /g/dot/vimrc
+"
+""" BASE CONFIGURATION
+filetype plugin indent on
+set foldmethod=syntax foldlevel=6
+set expandtab tabstop=4 shiftwidth=4 mouse=a 
+set hlsearch
+set number relativenumber 
+set backspace=indent,eol,start 
+set nrformats-=octal 
+set spell
+set scrolloff=2 sidescrolloff=5 
+set noerrorbells visualbell
+
+if $SHELL == "/bin/zsh"
+  set clipboard=unnamed
+else
+  set clipboard=unnamedplus
+endif
+
+" Work with screen
+if match($TERM, "screen")!=-1
+  set term=xterm
+endif
+
+
+" From https://www.youtube.com/watch?v=XA2WjJbmmoM&t=188s
+syntax enable
+set nocompatible path+=./** wildmenu
+command! MakeTags !ctags -R .
+
+
+""" PLUGINS
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/bundle')
+    Plug '/usr/local/opt/fzf'
+    Plug 'airblade/vim-gitgutter'
+
+    Plug 'elzr/vim-json'
+    Plug 'clojure-vim/vim-jack-in'
+    Plug 'justinmk/vim-sneak'
+    Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/limelight.vim'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'junegunn/vader.vim'
+    Plug 'preservim/nerdtree'
+    Plug 'preservim/tagbar'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-dispatch'
+    Plug 'vimwiki/vimwiki'
+    " Plug 'kevinoid/vim-jsonc'
+
+    " Color schemes
+    Plug 'flazz/vim-colorschemes'
+    Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'jdsimcoe/hyper.vim'
+    Plug 'tpope/vim-vividchalk'
+
+    if has('nvim')
+        Plug 'Olical/conjure'
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        Plug 'radenling/vim-dispatch-neovim'
+    endif
+call plug#end()
+
+" Plugin configuration
+
+" let g:paredit_mode = 0 " Not currently used
+let g:vimwiki_map_prefix = '<leader>ew'
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" COC settings
+set hidden updatetime=300 shortmess+=c 
+
+if has('nvim')
+else
+    set signcolumn=number
+endif
+
+
+""" KEYBINDINGS
+
+
+let mapleader = " "
+let maplocalleader = "-"
+inoremap kj <Esc>
+
+if has('nvim')
+tnoremap kj <C-\><C-N>
+else
+tnoremap kj <C-W>N
+end
+
+" (e)xtensions/plugins
+nnoremap <leader>ecc :call ToggleCocCompletion()<CR>
+nnoremap <leader>ech :call CocAction("doHover")<CR>
+nnoremap <leader>eci :CocInstall 
+nnoremap <leader>ei :PlugInstall<CR>
+nnoremap <leader>etf :TagbarOpenAutoClose<CR>
+nnoremap <leader>ett :TagbarToggle<CR>
+
+" (f)ind
+"
+nnoremap <leader>fd <Plug>(coc-definition)
+nnoremap <leader>fe <Plug>(coc-diagnostic-next)
+nnoremap <leader>fE <Plug>(coc-diagnostic-prev)
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fF :tabnew .<CR>:Explore<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fi <Plug>(coc-implementation)
+nnoremap <leader>ft <Plug>(coc-type-definition)
+nnoremap <leader>fr <Plug>(coc-references)
+nnoremap <leader>fw :VimwikiTabnewLink<CR>
+
+" (s)ettings
+nnoremap <leader>ss :set spell!<CR>
+nnoremap <leader>s0 :set textwidth=0<CR>
+nnoremap <leader>sf :set textwidth=79<CR>
+nnoremap <leader>s, :tabnew ~/.vimrc<CR>
+nnoremap <leader>s>2 :set shiftwidth=2 tabstop=2<CR>
+nnoremap <leader>s>4 :set shiftwidth=4 tabstop=4<CR>
+nnoremap <leader>s>8 :set shiftwidth=8 tabstop=8<CR>
+
+" (v)iew
+nnoremap <leader>vf :NERDTreeToggle<CR>
+
+" (w)indow
+nnoremap <leader>w <C-w>
+
+" Special
+nnoremap <leader>/ /<C-R>+<CR> 
+nnoremap <leader>! 0"mD:!m
+nnoremap <leader>% mm0"mYo<Esc>:read!python -c "print(m)"k"ndd`m
+
+" Old
+nnoremap <leader>,w :mksession! ~/.vim/session<CR>
+nnoremap <leader>,r :source ~/.vim/session<CR>
+nnoremap <leader>,W :mksession! ~/.vim/session2<CR>
+nnoremap <leader>,R :source ~/.vim/session2<CR>
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
+inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
+
+
+" COLOR SCHEME SETTINGS
+
+colorscheme molokai_dark
+hi CocErrorFloat ctermbg=88
+hi CocWarningFloat ctermbg=130
+hi CocFloating ctermfg=15
+
+" COMMANDS
+
+"" MY FUNCTIONS 
+
+function! ToggleCocCompletion()
+  call CocAutocomplete(coc#util#get_config('coc.source.around').enable ==# "v:false")
+endfunction
+
+function! CocAutocomplete(on)
+  if a:on
+    call coc#config('coc.source.around.enable', v:true)
+    call coc#config('coc.source.buffer.enable', v:true)
+  else
+    call coc#config('coc.source.around.enable', v:false)
+    call coc#config('coc.source.buffer.enable', v:false)
+  endif
+endfunction
+
+function! CopyLinkToWorkspace()
+    execute 'normal! myF[%l"uy%'
+    let hasSectionLink = stridx(@u, '#') != -1
+    execute "VimwikiFollowLink"
+    if hasSectionLink
+        execute "normal! 0mi\"oyf /^\<C-R>o\<CR>k\"oy'i\<C-^>`y" 
+        execute "nohlsearch"
+    else
+        execute "normal! 0gg\"iyG\<C-^>`y" 
+    endif
+    let sectionDesc = @o
+    let popup_window=popup_dialog(sectionDesc, {})
+    call setbufvar(winbufnr(popup_window), '&filetype', 'vimwiki')
+       call win_execute(popup_window, 'map <buffer> q :call popup_close(' . popup_window . ')<CR>')
+    " return sectionDesc
+endfunction
+
+"" FILETYPE SPECIFIC SETTINGS
+
+au BufNewFile,BufReadPost *.clj nnoremap <leader>lr :!lein run 
+au FileType vim nnoremap <buffer> <localleader>ev :source %<CR>:Vader *.vader<CR>

@@ -1,0 +1,7 @@
+[alias]
+	s = status -s
+	lg = log --oneline --decorate --all --graph
+    exclude = !vim .git/info/exclude
+[user]
+	name = Testare
+	email = testare.i9z@gmail.com

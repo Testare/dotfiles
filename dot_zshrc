@@ -1,0 +1,17 @@
+source $HOME/.zsh_functions
+source $HOME/.zsh_aliases
+
+export PATH="$PATH:/home/testare/.dotnet/tools"
+
+eval $(thefuck --alias please)
+zstyle :compinstall filename '/home/testare/.zshrc'
+autoload -Uz compinit && compinit
+
+HISTFILE=~/.histfile
+HISTSIZE=11000
+SAVEHIST=11000
+setopt SHARE_HISTORY
+
+export ELECTRON_TRASH=gio # Helps VSCode delete items
+
+[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
