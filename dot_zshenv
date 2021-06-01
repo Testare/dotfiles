@@ -1,4 +1,16 @@
+export PATH="$PATH:/home/testare/.dotnet/tools"
 export HISTFILE=~/.histfile
 export TERMINAL=konsole
 export EDITOR=vim
 export GDRIVE=/g
+export HISTSIZE=11000
+export SAVEHIST=11000
+export ELECTRON_TRASH=gio # Helps VSCode delete items
+
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_vim_job() { 
+    ACTIVE_VIM_JOB="$([ -n "$(jobs | grep vim)" ] && echo "v")"
+}
+precmd_functions+=( precmd_vcs_info )
+precmd_functions+=( precmd_vim_job )

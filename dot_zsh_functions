@@ -10,6 +10,7 @@
       done
       cd $DIRCHANGE
       echo "> $(pwd)"
+      DIRCHANGE=""
   else
       EXISTS="$(dirname "`pwd`" | grep "$1")"
       if [ -n "$EXISTS" ]; then
@@ -23,9 +24,12 @@
           done
           cd "$DIRPWD"
           echo "> $(pwd)"
+          DIRPWD=""
+          DIRBASE=""
       else 
           echo "Usage: Optional parameter must match a parent directory's name or a number"
       fi
+      EXISTS=""
   fi
 }
 
@@ -33,14 +37,6 @@ function panview {
     pandoc "$1" -f markdown -t latex -o ./out.pdf
     open ./out.pdf
 }
-
-function jsonpp {
-    touch "$1.tmp"
-    cat $1 | python -m json.tool > "${1}.tmp"
-    rm $1
-    mv "$1.tmp" $1
-}
-
 
 cpfp () {
     echo `pwd`/$1 | pbcopy

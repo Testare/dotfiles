@@ -1,17 +1,43 @@
+### Other sources
 source $HOME/.zsh_functions
 source $HOME/.zsh_aliases
+[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$PATH:/home/testare/.dotnet/tools"
 
-eval $(thefuck --alias please)
+# Options
+#
+ [ -f "$HOME/.local/bin/thefuck" ] && eval "$(thefuck --alias please)"
+
 zstyle :compinstall filename '/home/testare/.zshrc'
 autoload -Uz compinit && compinit
+autoload -Uz vcs_info
 
-HISTFILE=~/.histfile
-HISTSIZE=11000
-SAVEHIST=11000
+precmd_vcs_info() { vcs_info }
+precmd_vim_job() { 
+    ACTIVE_VIM_JOB="$([ -n "$(jobs | grep vim)" ] && echo "v")"
+}
+precmd_functions+=( precmd_vcs_info )
+precmd_functions+=( precmd_vim_job )
+
 setopt SHARE_HISTORY
+setopt prompt_subst
 
-export ELECTRON_TRASH=gio # Helps VSCode delete items
+zstyle ':vcs_info:git:*' formats ' [%b]%u%c'
+zstyle ':vcs_info:git:*' actionformats ' [%b|%a]%u%c'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' check-for-changes true
 
-[ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+set -o ignoreeof
+export PROMPT_COMMAND='history -a'
+
+
+### Prompt funness
+GREEK_ALPHABET="ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΝνΞξΟοΠπΡρΣσςΤτΥυΦφΧχΨψΩω"
+CYRILLIC="АБВГҐДЂЃЕЁЄЖЗЗ́ЅИІЇЙЈКЛЉМНЊОПРСС́ТЋЌУЎФХЦЧЏШЩЪЫЬЭЮЯ"
+RAND_CHARS="αβΓγΔδεζηΘθικΛλμνΞξΠπρΣσςτΦφχΨψΩωБГҐДЂЃЄЖЗИЇЙЛЉЊОПЋЌЎФЦЧЏШЩЪЫЬЭЮЯ" # Removed english looking ones and accents
+PROMPT_CHAR=""${RAND_CHARS:$(( RANDOM % ${#RAND_CHARS} )):1}""
+
+### Exported vairables
+export PROMPT="%F{226}%(1j.[%j\$ACTIVE_VIM_JOB] .)%F{green}%n [%4~]%F{red}\$vcs_info_msg_0_ %F{cyan}$PROMPT_CHAR%f "

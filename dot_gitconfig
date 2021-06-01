@@ -1,7 +1,14 @@
 [alias]
-	s = status -s
+	changes = diff --compact-summary HEAD~
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+	difs = diff --compact-summary
 	lg = log --oneline --decorate --all --graph
+	s = status -s
     exclude = !vim .git/info/exclude
 [user]
 	name = Testare
 	email = testare.i9z@gmail.com
+[pull]
+	rebase = true
+[color]
+	ui = auto
