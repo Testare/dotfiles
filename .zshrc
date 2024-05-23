@@ -6,10 +6,16 @@
 setopt SHARE_HISTORY
 export PROMPT_COMMAND='history -a'
 
-eval "$(zoxide init --cmd cd zsh)"
 autoload -Uz compinit && compinit
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -v '^?' backward-delete-char
 
+
+
+
+
+# Load local settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+# Needs to be at the end, shouldn't have conflicts with loca
+eval "$(zoxide init --cmd cd zsh)"
