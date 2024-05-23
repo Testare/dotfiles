@@ -1,0 +1,9 @@
+# GLOBAL
+alias fmt='cargo +nightly fmt --all'
+alias ll="ls -alG"
+alias ls="ls -pG" # Test w/o --color=auto
+alias mv="mv -i"
+alias reactions='open https://drive.google.com/drive/u/0/folders/0BxU1Fr5ukADteWRfMUZHN3hRYUU'
+alias rickroll='open https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+
+[ -f ~/.zsh_aliases.local ] && source ~/.zsh_aliases.local

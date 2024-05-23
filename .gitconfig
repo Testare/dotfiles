@@ -1,0 +1,17 @@
+[user]
+	email = testare.i9z@gmail.com
+	name = Testare
+[color]
+	ui = auto
+[alias]
+	s = status -s
+	lg = log --oneline --decorate --all --graph
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+	difs = diff --compact-summary
+	changes = diff --compact-summary HEAD~
+[pull]
+	rebase = true
+[push]
+	default = simple
+[include]
+    path = .gitconfig.local

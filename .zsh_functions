@@ -33,6 +33,19 @@
   fi
 }
 
+..simple () {
+  COUNT=${1:-1}
+  DIRCHANGE="."
+  while [ $COUNT -gt 0 ]; do 
+    echo "| $(cd $DIRCHANGE; pwd)"
+    COUNT=$(($COUNT - 1))
+    DIRCHANGE="../${DIRCHANGE}"
+  done
+  cd $DIRCHANGE
+  echo "> $(pwd)"
+
+}
+
 function panview {
     pandoc "$1" -f markdown -t latex -o ./out.pdf
     open ./out.pdf
@@ -42,14 +55,4 @@ cpfp () {
     echo `pwd`/$1 | pbcopy
 }
 
-function notes {
-    vim $HOME/gDrive/notes/$1.md;
-    if [ -f $HOME/gDrive/notes/$1.md ] && !([ -s $HOME/$1 ]); then
-        echo "writing note";
-        ln -s $HOME/gDrive/notes/$1.md $HOME/$1;
-    fi
-}
-
-function ts-tell {
-    echo "$*" | nc 54.225.52.148 7770
-}
+[ -f ~/.zsh_functions.local ] && source ~/.zsh_functions.local

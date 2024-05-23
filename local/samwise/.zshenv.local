@@ -1,0 +1,4 @@
+export HISTFILE=~/.histfile
+export TERMINAL=konsole
+export GDRIVE=/g
+export ELECTRON_TRASH=gio
