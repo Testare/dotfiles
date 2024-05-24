@@ -1,0 +1,2 @@
+export PATH="$PATH:/home/testare/.dotnet/tools:$HOME/.cargo/bin:/home/testare/pokemon-wilds/:$HOME/.local/bin"
+export PROMPT="%F{226}%(1j.[%j\$ACTIVE_VIM_JOB] .)%F{cyan}%T %F{082}%n [%4~]%F{magenta}\$vcs_info_msg_0_ %F{cyan}$PROMPT_CHAR%f "

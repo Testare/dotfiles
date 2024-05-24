@@ -1,7 +1,9 @@
 # GLOBAL
+alias countfiles='ll | nl -v -2 | tail -n 1| grep -o '\''\w\w*'\'' | head -n 1'
+alias crd='cargo run -- --debug'
 alias fmt='cargo +nightly fmt --all'
 alias ll="ls -alG"
-alias ls="ls -pG" # Test w/o --color=auto
+alias ls="ls -pG --color=auto"
 alias mv="mv -i"
 alias reactions='open https://drive.google.com/drive/u/0/folders/0BxU1Fr5ukADteWRfMUZHN3hRYUU'
 alias rickroll='open https://www.youtube.com/watch?v=dQw4w9WgXcQ'

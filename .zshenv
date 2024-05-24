@@ -3,9 +3,11 @@ export MOTD="Believe in the me that believes in you!!"
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=11000
 export SAVEHIST=11000
+export ELECTRON_TRASH=gio # Helps VSCode delete items
 
-source $HOME/.zsh_aliases
-source $HOME/.zsh_functions
+[ -f "$HOME/.zsh_aliases" ] && source $HOME/.zsh_aliases
+[ -f "$HOME/.zsh_functions" ] && source $HOME/.zsh_functions
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 set -o ignoreeof
 unsetopt BEEP
@@ -26,5 +28,4 @@ zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:*' unstagedstr '*'
 zstyle ':vcs_info:git:*' check-for-changes true
 
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f ~/.zshenv.local ] && source ~/.zshenv.local
