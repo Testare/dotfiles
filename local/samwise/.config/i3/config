@@ -11,7 +11,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Fira Code 11, Hack 12, monospace 8
+font pango:Fira Code 10, Hack 12, monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
@@ -52,9 +52,10 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # LOGAN keys to launch important applications
 bindsym $mod+y exec --no-startup-id dolphin
 bindsym $mod+u exec --no-startup-id code
-bindsym $mod+i exec --no-startup-id google-chrome-stable
-bindsym $mod+o exec --no-startup-id aseprite
-bindsym $mod+p exec --no-startup-id unityhub
+bindsym $mod+i exec --no-startup-id "google-chrome-stable --simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT' --profile-directory=Default"
+bindsym $mod+Shift+i exec --no-startup-id "google-chrome-stable --simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT' --profile-directory=Profile\ 1 "
+bindsym $mod+o exec --no-startup-id obsidian
+bindsym $mod+p exec --no-startup-id aseprite
 
 # change focus
 bindsym $mod+h focus left
@@ -176,11 +177,34 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+mode "brightness" {
+    bindsym 0 exec --no-startup-id ~/util/adjust_brightness.sh --max
+    bindsym 1 exec --no-startup-id ~/util/adjust_brightness.sh 10
+    bindsym 2 exec --no-startup-id ~/util/adjust_brightness.sh 20
+    bindsym 3 exec --no-startup-id ~/util/adjust_brightness.sh 30
+    bindsym 4 exec --no-startup-id ~/util/adjust_brightness.sh 40
+    bindsym 5 exec --no-startup-id ~/util/adjust_brightness.sh 50
+    bindsym 6 exec --no-startup-id ~/util/adjust_brightness.sh 60
+    bindsym 7 exec --no-startup-id ~/util/adjust_brightness.sh 70
+    bindsym 8 exec --no-startup-id ~/util/adjust_brightness.sh 80
+    bindsym 9 exec --no-startup-id ~/util/adjust_brightness.sh 90
+    bindsym grave exec --no-startup-id ~/util/adjust_brightness.sh --min
+
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+b mode "default"
+}
+
 bindsym $mod+r mode "resize"
+
+bindsym $mod+b mode "brightness"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        # falling thorugh to monospace
+        font pango:monospace 8, Hack 8, Fira Code 8
         status_command i3status
 }
 #
@@ -207,3 +231,5 @@ no_focus [class="plasmashell" window_type="notification"]
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+
+exec_always ~/.fehbg
