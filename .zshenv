@@ -4,6 +4,8 @@ export PROMPT_COMMAND='history -a'
 export HISTSIZE=11000
 export SAVEHIST=11000
 export ELECTRON_TRASH=gio # Helps VSCode delete items
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 [ -f "$HOME/.zsh_aliases" ] && source $HOME/.zsh_aliases
 [ -f "$HOME/.zsh_functions" ] && source $HOME/.zsh_functions
