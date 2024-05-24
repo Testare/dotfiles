@@ -224,6 +224,6 @@ set undodir=~/.vim/undo-dir
 set undofile
 
 
-if !empty(glob('~/.vimrc.local'))
-    source '~/.vimrc.local'
+if !empty(glob('$HOME/.vimrc.local.vim'))
+    source "$HOME/.vimrc.local.vim"
 endif
