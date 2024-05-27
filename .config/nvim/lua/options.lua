@@ -1,0 +1,39 @@
+local opt = vim.o
+
+opt.colorcolumn = 120
+opt.clipboard   = "unnamedplus" -- TODO validate on both computers
+opt.mouse       = "a" -- TODO Validate
+opt.spell       = false -- TODO is there a way to use this only in the appropriate places?
+opt.termguicolors   = true
+opt.undofile    = true
+
+opt.foldmethod  = "syntax"
+opt.foldlevel   = 6
+opt.foldmethod = 'expr' -- Use treesitter for folding
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
+opt.expandtab   = true
+opt.tabstop     = 4
+opt.softtabstop = 4
+opt.shiftwidth  = 4
+
+opt.number      = true
+opt.relativenumber  = true
+
+opt.scrolloff   = 3
+opt.sidescrolloff   = 5
+
+opt.splitright  = true
+opt.splitbelow = true
+
+opt.list        = true
+opt.listchars   = "tab:⇰ ,trail:·,extends:→,precedes:←,nbsp:·,eol:↩"
+
+
+vim.g.floaterm_opener   = "tabe"
+
+vim.lsp.set_log_level("debug")
+vim.cmd("highlight Beacon guibg=white") -- Used with beacon plugin
+vim.cmd("hi def IlluminatedWordText gui=underline") -- Used with illuminate plugin
+vim.cmd("hi def IlluminatedWordRead gui=underline")
+vim.cmd("hi def IlluminatedWordWrite gui=underline")
