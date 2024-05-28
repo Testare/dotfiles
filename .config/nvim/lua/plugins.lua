@@ -81,6 +81,7 @@ require("lazy").setup({
     "RRethy/vim-illuminate",
     "lukas-reineke/indent-blankline.nvim",
     "numToStr/Comment.nvim",
+    "airblade/vim-gitgutter",
     "preservim/tagbar",
     {
         "folke/todo-comments.nvim",
@@ -154,9 +155,9 @@ require("lazy").setup({
 require("mason").setup({
     ui = {
         icons = {
-            -- package_installed = "",
-            -- package_pending = "",
-            -- package_uninstalled = "",
+            package_installed = "",
+            package_pending = "",
+            package_uninstalled = "",
         },
     }
 })
