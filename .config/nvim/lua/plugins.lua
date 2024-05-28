@@ -94,11 +94,12 @@ require("lazy").setup({
         opts = {
             auto_fold = true;
         },
-    }
+    },
 
     -- UNDER REVIEW
+    -- "epwalsh/obsidian.nvim", -- Integrate with obsidian vaults
+    -- "epwalsh/pomo.nvim", -- Productivity timers
     -- "Olical/conjure", -- Add keybinds
-    -- {"nvim-telescope/telescope.nvim", tag = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" }},
     -- "smoka7/hop.nvim",
     -- "windwp/vim-floaterm-repl" -- Run markdown codeblocks in floaterm, compare to conjure
     -- "kyazdani42/nvim-tree.lua" -- Do I need a file tree? Is this better than nerdtree?
