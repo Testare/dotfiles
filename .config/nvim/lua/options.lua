@@ -1,7 +1,8 @@
 local opt = vim.o
 
-opt.colorcolumn = 120
 opt.clipboard   = "unnamedplus" -- TODO validate on both computers
+opt.colorcolumn = 120
+opt.conceallevel    = 1
 opt.mouse       = "a" -- TODO Validate
 opt.spell       = false -- TODO is there a way to use this only in the appropriate places?
 opt.termguicolors   = true

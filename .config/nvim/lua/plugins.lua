@@ -97,8 +97,47 @@ require("lazy").setup({
     },
 
     -- UNDER REVIEW
-    -- "epwalsh/obsidian.nvim", -- Integrate with obsidian vaults
-    -- "epwalsh/pomo.nvim", -- Productivity timers
+    {
+        "epwalsh/obsidian.nvim",
+        -- version = "*",
+        lazy = true,
+        ft = "markdown",
+        dependencies = {
+            -- "nvim-lua/plenary.vim", -- NOCOMMIT
+        },
+        opts = {
+            workspaces = {
+                {
+                    name = "samwise",
+                    path = "/g/n"
+                },
+                {
+                    name = "werk",
+                    path = "~/personal/n"
+                }
+            },
+            disable_frontmatter=true,
+            preferred_link_style = "markdown",
+            ui = {
+                enabled = true,
+                checkboxes = {
+                    ["x"] = {char = "✔", hl_group = "ObsidianDone" },
+                    ["X"] = {char = "✔", hl_group = "ObsidianDone" },
+                    [" "] = {char = "󰄱", hl_group = "ObsidianTodo" },
+                }
+            },
+            daily_notes = {
+                folder = "journal",
+            }
+        },
+    }, -- Integrate with obsidian vaults
+    {
+        "epwalsh/pomo.nvim", -- Productivity timers
+        cmd = { "TimerStart", "TimerEnd" },
+        dependencies = {
+            -- "rcarriage/nvim-notify" -- NOCOMMIT
+        }
+    },
     -- "Olical/conjure", -- Add keybinds
     -- "smoka7/hop.nvim",
     -- "windwp/vim-floaterm-repl" -- Run markdown codeblocks in floaterm, compare to conjure

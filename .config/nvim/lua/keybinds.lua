@@ -64,7 +64,7 @@ map('n', '<leader>sf', ':lua vim.otextwidth=79<CR>', {desc="Turn on textwidth en
 map('n', '<leader>s,', '<cmd>tabnew ~/.config/nvim<CR>', {desc="View config file"})
 map('n', '<leader>s<', ':tabnew ~/.vimrc<CR>', {desc="View alternate config file"})
 
--- (t) Tags/Troubles
+-- (t) Tabs
 map('n', '<leader>tn', '<cmd>tabnew<CR>', {desc="Open new tab"})
 
 -- (v) View
