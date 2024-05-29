@@ -4,3 +4,5 @@ local map = vim.keymap.set
 map('n', '<leader>ra', function() 
     vim.cmd.RustLsp('codeAction')
 end, {buffer=bufnr})
+
+vim.lsp.inlay_hint.enable()

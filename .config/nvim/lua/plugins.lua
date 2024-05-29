@@ -82,6 +82,7 @@ require("lazy").setup({
 
     -- Color schemes
     "tpope/vim-vividchalk",
+    "flazz/vim-colorschemes",
 
     -- Other
     "AndrewRadev/sideways.vim", -- :SidewaysLeft + :SidewaysRight
