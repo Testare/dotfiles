@@ -1,6 +1,7 @@
 -- From https://rsdlt.github.io/posts/rust-nvim-ide-guide-walkthrough-development-debug/
 -- Mostly copied as is from there, might want to change these settings
 
+--[[
 local rt = require("rust-tools")
 rt.setup({
   server = {
@@ -12,7 +13,7 @@ rt.setup({
     end,
   },
 })
-
+--]]
 
 -- RUST TOOL DIAGNOSTICS
 local sign = function(opts)
@@ -23,9 +24,9 @@ local sign = function(opts)
   })
 end
 
-sign({name = 'DiagnosticSignError', text = ''})
-sign({name = 'DiagnosticSignWarn', text = ''})
-sign({name = 'DiagnosticSignHint', text = ''})
+sign({name = 'DiagnosticSignError', text = ''})
+sign({name = 'DiagnosticSignWarn', text = ''})
+sign({name = 'DiagnosticSignHint', text = ''})
 sign({name = 'DiagnosticSignInfo', text = ''})
 
 vim.diagnostic.config({
@@ -66,7 +67,6 @@ vim.api.nvim_set_option('updatetime', 300)
 -- Goto previous / next diagnostic warning / error 
 -- Show inlay_hints more frequently 
 vim.cmd([[
-set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
@@ -75,11 +75,11 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 local cmp = require('cmp')
 cmp.setup({
   -- Enable LSP snippets
-  snippet = {
+  --[[snippet = {
     expand = function(args)
         vim.fn["vsnip#anonymous"](args.body)
     end,
-  },
+  },]]
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -102,7 +102,7 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
     { name = 'nvim_lua', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
     { name = 'buffer', keyword_length = 2 },        -- source current buffer
-    { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
+    -- { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
     { name = 'calc'},                               -- source for math calculation
   },
   window = {

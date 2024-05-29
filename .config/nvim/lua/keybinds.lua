@@ -51,10 +51,8 @@ map('n', '<leader>fD', vim.lsp.buf.type_definition, {desc="Find item type defini
 
 -- (r) REFACTOR
 
+map('n', '<leader>ra', vim.lsp.buf.code_action, {desc="Perform code action"})
 map('n', '<leader>rn', vim.lsp.buf.rename, {desc="Refactor name"})
--- HOVER
--- GO TO DECLARATION
--- GO TO IMPLEMENTATIONS
 
 -- (s) SETTINGS
 
@@ -71,6 +69,7 @@ map('n', '<leader>tn', '<cmd>tabnew<CR>', {desc="Open new tab"})
 
 map('n', '<leader>vf', ':NERDTreeToggle<CR>', {desc="View files (not functional)"})
 map('n', '<leader>vh', vim.lsp.buf.hover, {desc="View hover information"})
+map('n', '<leader>vH', function() vim.diagnostic.open_float(nil, { focusable = false }) end)
 map('n', '<leader>vtr', function() require'trouble'.toggle()  end, {desc="Toggle trouble bar"})
 map('n', '<leader>vtb', ':TagbarToggle<CR>', {desc="Toggle tagbar"})
 

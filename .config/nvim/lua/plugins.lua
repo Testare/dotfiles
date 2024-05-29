@@ -53,29 +53,38 @@ require("lazy").setup({
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "simrat39/rust-tools.nvim", -- TODO replace with: https://github.com/mrcjkb/rustaceanvim
+    -- "simrat39/rust-tools.nvim", -- TODO replace with: https://github.com/mrcjkb/rustaceanvim
+    {
+        "mrcjkb/rustaceanvim",
+
+
+    },
+
+
 
      -- Debugger
     "mfussenegger/nvim-dap",
     "theHamsta/nvim-dap-virtual-text",
     -- "jay-babu/mason-nvim-dap.nvim", -- Use Mason for Dap adapters. Might want to use in future
 
-    -- Movement
-    "AndrewRadev/sideways.vim", -- :SidewaysLeft + :SidewaysRight
-
-    -- Completions
-    "hrsh7th/nvim-cmp", -- Main completions library
-    "hrsh7th/cmp-nvim-lsp", -- LSP completions
-    "hrsh7th/cmp-nvim-lua", -- Other completions...
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-buffer",
+    {
+        "hrsh7th/nvim-cmp", -- Main completions library
+        dependencies = {
+            "hrsh7th/vim-vsnip",
+            "hrsh7th/cmp-nvim-lsp", -- LSP completions
+            "hrsh7th/cmp-nvim-lua", -- Other completions...
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
+        }
+    },
 
 
     -- Color schemes
     "tpope/vim-vividchalk",
 
     -- Other
+    "AndrewRadev/sideways.vim", -- :SidewaysLeft + :SidewaysRight
     "voldikss/vim-floaterm",
     "danilamihailov/beacon.nvim",
     "RRethy/vim-illuminate",
@@ -111,10 +120,6 @@ require("lazy").setup({
                     name = "samwise",
                     path = "/g/n"
                 },
-                {
-                    name = "werk",
-                    path = "~/personal/n"
-                }
             },
             disable_frontmatter=true,
             preferred_link_style = "markdown",
@@ -138,6 +143,12 @@ require("lazy").setup({
             -- "rcarriage/nvim-notify" -- NOCOMMIT
         }
     },
+    {
+        "windwp/nvim-autopairs",
+        event="InsertEnter",
+        config = true,
+        opts = {}
+    }
     -- "Olical/conjure", -- Add keybinds
     -- "smoka7/hop.nvim",
     -- "windwp/vim-floaterm-repl" -- Run markdown codeblocks in floaterm, compare to conjure
