@@ -33,9 +33,10 @@ opt.listchars   = "tab:⇰ ,trail:·,extends:→,precedes:←,nbsp:·,eol:↩"
 
 
 vim.g.floaterm_opener   = "tabe"
+vim.g.floaterm_title    = '─[$1/$2]'
 vim.g.gitgutter_sign_priority   = 5 -- less than default
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("off")
 vim.cmd("hi Beacon guibg=white") -- Used with beacon plugin
 vim.cmd("hi def IlluminatedWordText gui=underline") -- Used with illuminate plugin
 vim.cmd("hi def IlluminatedWordRead gui=underline")
@@ -44,3 +45,4 @@ vim.cmd("hi SignColumn guibg=black ctermbg=black")
 vim.cmd("hi GitGutterAdd    guifg=#009900 guibg=black ctermfg=2 ctermbg=black")
 vim.cmd("hi GitGutterChange guifg=#bbbb00 guibg=black ctermfg=3 ctermbg=black")
 vim.cmd("hi GitGutterDelete guifg=#ff0000 guibg=black ctermfg=1 ctermbg=black")
+
