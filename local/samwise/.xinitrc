@@ -48,17 +48,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-twm &
-xclock -geometry 50x50-1+1 &
-xterm -geometry 80x50+494+51 &
-xterm -geometry 80x20+494-0 &
+# twm &
+# xclock -geometry 50x50-1+1 &
+# xterm -geometry 80x50+494+51 &
+# xterm -geometry 80x20+494-0 &
 # Here Xfce is kept as default
-session=${1:kde-i3}
-export DESKTOP_SESSION=plasma
+# session=${1:-kde-i3}
+# export DESKTOP_SESSION=plasma
 
-case $session in
-    i3|i3wm           ) exec i3;;
-    kde               ) exec startplasma-x11;;
-    kde-i3            ) exec env KDEWM=/usr/bin/i3 exec startplasma-x11;;
-    xterm             ) exec xterm -geometry 80x66+0+0 -name login;;
-esac
+# echo $session
+
+# case $session in
+#     i3|i3wm           ) exec i3;;
+#     kde               ) exec startplasma-x11;;
+#     kde-i3            ) exec env KDEWM=/usr/bin/i3 exec startplasma-x11;;
+#     xterm             ) exec xterm -geometry 80x66+0+0 -name login;;
+# esac
+exec env KDEWM=/usr/bin/i3 startplasma-x11
