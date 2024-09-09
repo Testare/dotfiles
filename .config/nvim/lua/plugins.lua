@@ -85,6 +85,8 @@ require("lazy").setup({
     "flazz/vim-colorschemes",
 
     -- Other
+    -- "NoahTheDuke/vim-just", -- justfile support is included in tresitter-nvim
+    "IndianBoy42/tree-sitter-just",
     "AndrewRadev/sideways.vim", -- :SidewaysLeft + :SidewaysRight
     "voldikss/vim-floaterm",
     "danilamihailov/beacon.nvim",

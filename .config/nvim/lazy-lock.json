@@ -25,6 +25,7 @@
   "sideways.vim": { "branch": "main", "commit": "1cb0e4d7259dac8bef0dc12b4a7f8e842b32116b" },
   "tagbar": { "branch": "master", "commit": "12edcb59449b335555652898f82dd6d5c59d519a" },
   "todo-comments.nvim": { "branch": "main", "commit": "70a93ce66083699571adc361166504b03cc39c2b" },
+  "tree-sitter-just": { "branch": "main", "commit": "fd814fc6c579f68c2a642f5e0268cf69daae92d7" },
   "trouble.nvim": { "branch": "main", "commit": "29d1bb81adc847e89ddbbf5b11ff0079daf7cc0a" },
   "vim-colorschemes": { "branch": "master", "commit": "fd8f122cef604330c96a6a6e434682dbdfb878c9" },
   "vim-floaterm": { "branch": "master", "commit": "4e28c8dd0271e10a5f55142fb6fe9b1599ee6160" },

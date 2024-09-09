@@ -70,7 +70,7 @@ map('n', '<leader>tn', '<cmd>tabnew<CR>', {desc="Open new tab"})
 map('n', '<leader>vf', ':NERDTreeToggle<CR>', {desc="View files (not functional)"})
 map('n', '<leader>vh', vim.lsp.buf.hover, {desc="View hover information"})
 map('n', '<leader>vH', function() vim.diagnostic.open_float(nil, { focusable = false }) end)
-map('n', '<leader>vtr', function() require'trouble'.toggle()  end, {desc="Toggle trouble bar"})
+map('n', '<leader>vtr', function() require'trouble'.toggle('diagnostics')  end, {desc="Toggle trouble bar"})
 map('n', '<leader>vtb', ':TagbarToggle<CR>', {desc="Toggle tagbar"})
 
 -- (w) WINDOW

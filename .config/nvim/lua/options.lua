@@ -23,7 +23,7 @@ opt.relativenumber  = true
 
 opt.scrolloff   = 3
 opt.sidescrolloff   = 5
-opt.signcolumn  = "auto:2"
+opt.signcolumn  = "auto:1"
 
 opt.splitright  = true
 opt.splitbelow = true
